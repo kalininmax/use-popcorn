@@ -13,7 +13,7 @@ import WatchedMoviesList from './components/WatchedMoviesList';
 import Loader from './components/Loader';
 import ErrorMessage from './components/ErrorMessage';
 
-const API_KEY = 'f84fc31d';
+const API_KEY = '84015b10';
 
 const App = () => {
   const [query, setQuery] = useState('');

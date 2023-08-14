@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import StarRating from './StarRating';
 import Loader from './Loader';
 
-const API_KEY = 'f84fc31d';
+const API_KEY = '84015b10';
 
 const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
   const [movie, setMovie] = useState({});
