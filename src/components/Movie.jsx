@@ -1,9 +1,17 @@
 /* eslint-disable react/prop-types */
 
-const Movie = ({ movie }) => {
+const Movie = ({ movie, onSelectMovie }) => {
   return (
-    <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
+    <li onClick={() => onSelectMovie(movie.imdbID)}>
+      <picture>
+        <img
+          src={movie.Poster}
+          alt=""
+          width={40}
+          height={60}
+          onError={(e) => (e.target.style.visibility = 'hidden')}
+        />
+      </picture>
       <h3>{movie.Title}</h3>
       <div>
         <p>
