@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 
-import { useEffect, useState } from 'react';
-import StarRating from './StarRating';
-import Loader from './Loader';
+import { useEffect, useState } from "react";
+import StarRating from "./StarRating";
+import Loader from "./Loader";
 
-const API_KEY = 'f84fc31d';
+const API_KEY = "f84fc31d";
 
 const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [userRating, setUserRating] = useState('');
+  const [userRating, setUserRating] = useState("");
 
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
   const watchedUserRating = watched.find(
@@ -36,7 +36,7 @@ const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
       year,
       poster,
       imdbRating: Number(imdbRating),
-      runtime: Number(runtime.split(' ').at(0)),
+      runtime: Number(runtime.split(" ").at(0)),
       userRating,
     });
     onCloseMovie();
@@ -44,15 +44,15 @@ const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
 
   useEffect(() => {
     const callback = (e) => {
-      if (e.code === 'Escape') {
+      if (e.code === "Escape") {
         onCloseMovie();
       }
     };
 
-    document.addEventListener('keydown', callback);
+    document.addEventListener("keydown", callback);
 
     return () => {
-      document.removeEventListener('keydown', callback);
+      document.removeEventListener("keydown", callback);
     };
   }, [onCloseMovie]);
 
@@ -60,7 +60,7 @@ const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
     const getMovieDetails = async () => {
       setIsLoading(true);
       const res = await fetch(
-        `http://www.omdbapi.com/?apikey=${API_KEY}&i=${selectedId}`
+        `https://www.omdbapi.com/?apikey=${API_KEY}&i=${selectedId}`
       );
       const data = await res.json();
       setMovie(data);
@@ -74,7 +74,7 @@ const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
     document.title = `Movie | ${title}`;
 
     return () => {
-      document.title = 'usePopcorn';
+      document.title = "usePopcorn";
     };
   }, [title]);
 
@@ -89,7 +89,7 @@ const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
             <img
               src={poster}
               alt=""
-              onError={(e) => (e.target.style.visibility = 'hidden')}
+              onError={(e) => (e.target.style.visibility = "hidden")}
             />
             <div className="details-overview">
               <h2>{title}</h2>
